@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB0965AE2007D5B600D57B79 /* companiesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB0965AC2007D5B600D57B79 /* companiesModel.xcdatamodeld */; };
 		CB3E6BEC2006524000907489 /* UIColor+theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E6BEB2006524000907489 /* UIColor+theme.swift */; };
 		CB3E6BEE200655E800907489 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E6BED200655E800907489 /* Company.swift */; };
 		CB4D405520065E3500158DD6 /* CreateCompanyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4D405420065E3500158DD6 /* CreateCompanyController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB0965AD2007D5B600D57B79 /* companiesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = companiesModel.xcdatamodel; sourceTree = "<group>"; };
 		CB3E6BEB2006524000907489 /* UIColor+theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+theme.swift"; sourceTree = "<group>"; };
 		CB3E6BED200655E800907489 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		CB4D405420065E3500158DD6 /* CreateCompanyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCompanyController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				CB3E6BEB2006524000907489 /* UIColor+theme.swift */,
 				CBF6D2C42003CF66009CE609 /* LaunchScreen.storyboard */,
 				CBF6D2C72003CF66009CE609 /* Info.plist */,
+				CB0965AC2007D5B600D57B79 /* companiesModel.xcdatamodeld */,
 			);
 			path = C0reData4pp;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 				CB4D405520065E3500158DD6 /* CreateCompanyController.swift in Sources */,
 				CBF6D2BC2003CF66009CE609 /* AppDelegate.swift in Sources */,
 				CB3E6BEE200655E800907489 /* Company.swift in Sources */,
+				CB0965AE2007D5B600D57B79 /* companiesModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +326,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CB0965AC2007D5B600D57B79 /* companiesModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CB0965AD2007D5B600D57B79 /* companiesModel.xcdatamodel */,
+			);
+			currentVersion = CB0965AD2007D5B600D57B79 /* companiesModel.xcdatamodel */;
+			path = companiesModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CBF6D2B02003CF66009CE609 /* Project object */;
 }
