@@ -8,7 +8,15 @@
 
 import UIKit
 
+// Custom Delegation
+
+protocol CreateCompanyControllerDelegate {
+    func didAddCompany(company: Company)
+}
+
 class CreateCompanyController: UIViewController {
+    
+    var delegate: CreateCompanyControllerDelegate?
     
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -31,6 +39,7 @@ class CreateCompanyController: UIViewController {
         
         navigationItem.title = "Create company"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
         view.backgroundColor = .darkBlue
     }
     
@@ -43,8 +52,6 @@ class CreateCompanyController: UIViewController {
         view.addSubview(nameLabel)
         view.addSubview(nameTextField)
         
-        nameLabel.backgroundColor = .yellow
-        
         NSLayoutConstraint.activate([
             
             lightBlueBackgroundView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -53,11 +60,31 @@ class CreateCompanyController: UIViewController {
             lightBlueBackgroundView.heightAnchor.constraint(equalToConstant: 50),
             
             nameLabel.topAnchor.constraint(equalTo: view.topAnchor),
-            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            nameLabel.heightAnchor.constraint(equalToConstant: 50)
+//            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            nameLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+//            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            nameLabel.widthAnchor.constraint(equalToConstant: 100),
+            nameLabel.heightAnchor.constraint(equalToConstant: 50),
+            
+            nameTextField.leftAnchor.constraint(equalTo: nameLabel.rightAnchor),
+            nameTextField.rightAnchor.constraint(equalTo: view.rightAnchor),
+            nameTextField.bottomAnchor.constraint(equalTo: nameLabel.bottomAnchor),
+            nameTextField.topAnchor.constraint(equalTo: nameLabel.topAnchor)
             
             ])
+    }
+    
+    @objc func handleSave() {
+        
+        dismiss(animated: true) {
+            guard let name = self.nameTextField.text else {
+                return
+            }
+            
+            let company = Company(name: name, founded: Date())
+            
+            self.delegate?.didAddCompany(company: company)
+        }
     }
     
     @objc func handleCancel() {
