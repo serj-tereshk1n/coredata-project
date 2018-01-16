@@ -98,12 +98,23 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
             }
         }
         
-        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (_, indexPath) in
-            let company = self.companies[indexPath.row]
-            print("Editing company:", company.name ?? "")
-        }
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit", handler: editHandlerFunction)
+    
+        deleteAction.backgroundColor = .lightRed
+        editAction.backgroundColor = .darkBlue
         
         return [deleteAction, editAction]
+    }
+    
+    private func editHandlerFunction(action: UITableViewRowAction, indexPath: IndexPath) {
+        let company = companies[indexPath.row]
+        print("Editing company:", company.name ?? "")
+        
+        let editCompanyController = CreateCompanyController()
+        editCompanyController.delegate = self
+        editCompanyController.company = company
+        let navCtrl = CustomNavigationController(rootViewController: editCompanyController)
+        present(navCtrl, animated: true, completion: nil)
     }
     
     @objc func handleAddCompany() {
@@ -115,6 +126,13 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         createCompanyController.delegate = self
         
         present(navCtrl, animated: true, completion: nil)
+    }
+    
+    func didEditCompany(company: Company) {
+        
+        let row = companies.index(of: company)
+        let reloadIndexPath = IndexPath(row: row!, section: 0)
+        tableView.reloadRows(at: [reloadIndexPath], with: .middle)
     }
     
     func didAddCompany(company: Company) {
