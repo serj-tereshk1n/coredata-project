@@ -71,10 +71,35 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         
         let company = companies[indexPath.row]
         
+        if let name = company.name, let founded = company.founded {
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM dd, yyyy"
+            
+            let foundedDateString = dateFormatter.string(from: founded)
+            
+            let titleText = "\(name) - Founded: \(foundedDateString)"
+            cell.textLabel?.text = titleText
+            
+        } else {
+            cell.textLabel?.text = company.name
+        }
+        
         cell.backgroundColor = .tealColor
-        cell.textLabel?.text = company.name
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        
+        if let imageData = company.imageData {
+            cell.imageView?.image = UIImage(data: imageData)
+        } else {
+            cell.imageView?.image = #imageLiteral(resourceName: "select_photo_empty")
+        }
+        
+        cell.imageView?.clipsToBounds = true
+        cell.imageView?.layer.cornerRadius = (cell.imageView?.frame.width ?? 0) / 2
+        cell.imageView?.layer.borderWidth = 1
+        cell.imageView?.layer.borderColor = UIColor.darkBlue.cgColor
+        
         return cell
     }
     
