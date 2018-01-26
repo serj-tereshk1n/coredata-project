@@ -218,6 +218,6 @@ class CreateCompanyController: UIViewController, UINavigationControllerDelegate,
     }
     
 //    func setupCircularImageStyle() {
-//    
+//
 //    }
 }
